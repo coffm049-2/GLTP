@@ -1,0 +1,71 @@
+*.png
+*.mpeg
+*.mp4
+*_out$
+*_error$
+*fvcom$
+*.txt
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+*.pyc
+*.cfg
+vizualization/visitPy
+*/fvcom$
+LakeOntario/.Rhistory
+LakeOntario/fvcom_modded
+realData/
+data/
+shared/
+noaaModel/
+oldModels/
+
+archive
+
+*.nc
+*.png
+*.mpg
+*.dat
+*.2dm
+*.dat
+*.inp
+*_out
+*_err
+*.csv
+*.xlsx
+*.Rds
+*/bin/*
+*.grb2
+LakeOntario/venv/
+
+# Ignoreing build files etc is handled by root gitignore

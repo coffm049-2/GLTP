@@ -1,0 +1,23 @@
+realData/
+data/
+shared/
+noaaModel/
+oldModels/
+
+archive
+
+*.nc
+*.png
+*.mpg
+*.dat
+*.2dm
+*.dat
+*.inp
+*_out
+*_err
+*.csv
+*.xlsx
+*.Rds
+
+
+# Ignoreing build files etc is handled by root gitignore

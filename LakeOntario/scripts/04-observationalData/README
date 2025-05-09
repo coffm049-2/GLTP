@@ -1,0 +1,7 @@
+
+# Directory contents
+- [archive](archive) - old files no longer relevant
+- [GLENDA.R](GLENDA.R) - function to process Glenda data
+- [01-nodeMapping.R](01-nodeMapping.R) - map the observational data to FVCOM nodes
+- [02-matchData.SLURM](02-matchData.SLURM) - match all observational data to the model output. Calls `matchData.R`
+- [02-matchData.R](02-matchData.R) - match all observational data to the model output

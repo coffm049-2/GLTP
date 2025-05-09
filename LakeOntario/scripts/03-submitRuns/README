@@ -1,0 +1,16 @@
+SLURM scripts for subtmitting simulation runs
+
+- In order for run to work make sure:
+  - you've defined the appropriate run file `runs/20XX/<scenario>_run.nml`
+  - you copy the coreolis files in `input/runs`
+    - For instance if I want to create a `new_run.nml` runfile need to do the following within `input/runs`, `cp fvcom_cor.dat new_cor.dat`
+  - Test it for a short time period first then commit the full run
+    - I suggest doing the short run interactively
+      - Request an interactive batch job with 24 threads `salloc -n 24`
+        - It'll make wait  second but eventually it will return the command prompt in the terminal
+      - Make sure your modules are loaded (they're in the root project directory) `source physicsModules.sh`
+      - Check the run interactively `mpiexec -n 24 fvcom_modded --casename=runs/20XX/new`
+  - Make the appropriate SLURM script
+    - Copy an old SLURM script and find and replace the old run name with the new run name
+      - `:%s/OLDRUN/NEWRUN` followed by enter
+  - Then once you feel good about it submit the full run using `sbatch`

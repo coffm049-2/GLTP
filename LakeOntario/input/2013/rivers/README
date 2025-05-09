@@ -1,0 +1,21 @@
+# Before run you need to make sure river inputs have all of the TP species you want
+# check with ncdump -h <filename>
+
+
+# otherwise add them
+# load in nco module
+source ../../../../physicsModules.sh 
+
+# copy and paste the -s flag to create more fields for each loading scenario
+ncap2 -s"TP_notl1=TP_notl" \
+  -s"TP_loem1=TP_loem" \
+  -s"TP_loem2=TP_loem" \
+  -s"TP_dolan1=TP_dolan" \
+  -v loofs_riv_TP_2013Full.nc loofs_riv_TP_2013Fullnew.nc 
+
+# then make sure to uptate the TP.in_multi such that it has all of the new TP fields
+
+# also copy the initial conditions as necessary
+cp NUTRIENT_INI_1.dat NUTRIENT_INI_2.dat 
+cp NUTRIENT_INI_1.dat NUTRIENT_INI_3.dat 
+cp NUTRIENT_INI_1.dat NUTRIENT_INI_4.dat

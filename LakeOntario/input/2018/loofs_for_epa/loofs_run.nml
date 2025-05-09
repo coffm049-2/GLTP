@@ -1,0 +1,350 @@
+!================================================================!
+   _______  _     _  _______  _______  _______  ______     _____
+  (_______)(_)   (_)(_______)(_______)(_______)(_____ \   (_____)
+   _____    _     _  _        _     _  _  _  _  _____) )  _  __ _
+  |  ___)  | |   | || |      | |   | || ||_|| |(_____ (  | |/ /| |
+  | |       \ \ / / | |_____ | |___| || |   | | _____) )_|   /_| |
+  |_|        \___/   \______) \_____/ |_|   |_|(______/(_)\_____/
+  -- Beta Release
+ !================================================================!
+ !                                                                !
+ !========DOMAIN DECOMPOSITION USING: METIS 4.0.1 ================!
+ !======Copyright 1998, Regents of University of Minnesota========!
+ !                                                                !
+ &NML_CASE
+ CASE_TITLE      = 'Lake Ontario version "". Nowcast Run "102512". 2023-10-25 00:00 to 2023-10-25 12:00 UTC. elev0 = 74.2 m'
+ TIMEZONE        = 'UTC',
+ DATE_FORMAT     = 'YMD'
+ DATE_REFERENCE  = '1970-01-01 00:00:00'
+ START_DATE      = '2023-10-25 00:00:00'
+ END_DATE        = '2023-10-25 12:00:00'
+ /
+
+ &NML_STARTUP
+ STARTUP_TYPE      = 'hotstart', ! 'hotstart',
+ STARTUP_FILE      = '102512_restart.nc',
+ STARTUP_UV_TYPE   = 'set values', ! 'set values'
+ STARTUP_TURB_TYPE = 'set values',
+ STARTUP_TS_TYPE   = 'set values', ! 'constant'
+ STARTUP_T_VALS    = 15.0,
+ STARTUP_S_VALS    = 0.,
+ STARTUP_DMAX      = -10.0   ! a reference level for
+ /
+
+ &NML_IO
+ INPUT_DIR       = './',!'/mnt/projects/hpc/lakes/ont///2023/nowcast/102512/',
+ OUTPUT_DIR      = './',!'/mnt/projects/hpc/lakes/ont///2023/nowcast/102512/',
+ IREPORT         = 360,
+ VISIT_ALL_VARS  = F,
+ WAIT_FOR_VISIT  = F,
+ USE_MPI_IO_MODE = F
+ /
+
+ &NML_INTEGRATION
+ EXTSTEP_SECONDS =  5,
+ ISPLIT          =  2.0,
+ IRAMP           =  0,
+ MIN_DEPTH       =  0.1,
+ STATIC_SSH_ADJ  =  0.0
+ /
+
+ &NML_RESTART
+ RST_ON           = T,
+ RST_FIRST_OUT    = '2023-10-25 12:00:00',
+ RST_OUT_INTERVAL = 'days=1.0',
+ RST_OUTPUT_STACK = 0
+ /
+
+ &NML_NETCDF
+ NC_ON   = T,
+ NC_FIRST_OUT    = '2023-10-25 01:00:00',
+ NC_OUT_INTERVAL = 'seconds=3600.0', !'days=1.', !'seconds=3600.',
+ NC_OUTPUT_STACK = 1200,
+ NC_GRID_METRICS = T,
+ NC_VELOCITY     = T,
+ NC_SALT_TEMP    = T,
+ NC_TURBULENCE   = F,
+ NC_AVERAGE_VEL  = F,
+ NC_VERTICAL_VEL = F,
+ NC_WIND_VEL     = T,
+ NC_WIND_STRESS  = F,
+ NC_EVAP_PRECIP  = T,
+ NC_SURFACE_HEAT = T,
+ NC_GROUNDWATER  = F,
+ NC_ATM_PRESS    = T,
+ NC_ICE          = T
+ /
+
+ &NML_NETCDF_SURFACE
+ NCSF_ON = F,
+ NCSF_FIRST_OUT = '2023-10-25 01:00:00', ! 'Date to start NETCDF OUTPUT: Format the same as NC_FIRST_OUT'
+ NCSF_OUT_INTERVAL = 'seconds=3600.0', ! "A length of time: 'seconds= ','days= ', or 'cycles= '"
+ NCSF_OUTPUT_STACK = 0,
+ NCSF_SUBDOMAIN_FILES= "FVCOM",
+ NCSF_GRID_METRICS = T,
+ NCSF_FILE_DATE    = F,
+ NCSF_VELOCITY     = T,
+ NCSF_SALT_TEMP    = T,
+ NCSF_TURBULENCE   = F,
+ NCSF_WIND_VEL     = F
+ /
+
+ &NML_NETCDF_AV
+ NCAV_ON = F,
+ NCAV_FIRST_OUT       = '2000-01-01 00:00:00',
+ NCAV_OUT_INTERVAL    = 'seconds=3600.',
+ NCAV_OUTPUT_STACK    = 0,
+ NCAV_SUBDOMAIN_FILES = 'none',
+ NCAV_GRID_METRICS    = T,
+ NCAV_FILE_DATE       = F,
+ NCAV_VELOCITY        = F,
+ NCAV_SALT_TEMP       = F,
+ NCAV_TURBULENCE      = F,
+ NCAV_AVERAGE_VEL     = F,
+ NCAV_VERTICAL_VEL    = F,
+ NCAV_WIND_VEL        = F,
+ NCAV_WIND_STRESS     = F,
+ NCAV_EVAP_PRECIP     = F,
+ NCAV_SURFACE_HEAT    = F,
+ NCAV_GROUNDWATER     = F,
+ NCAV_BIO             = F,
+ NCAV_WQM             = F,
+ NCAV_VORTICITY       = F
+ /
+
+
+ &NML_SURFACE_FORCING
+ WIND_ON      = T,
+ WIND_TYPE    = 'speed',         ! 'stress',
+ WIND_FILE    = '102512_met.nc',
+ WIND_KIND    = 'variable',      ! 'constant',
+ WIND_X       =  0.0000000E+00,
+ WIND_Y       =  0.0000000E+00,
+
+ HEATING_ON                    = F,
+ HEATING_TYPE                  = 'flux',
+ HEATING_KIND                  = 'variable',
+ HEATING_FILE                  = 'none',
+ HEATING_LONGWAVE_LENGTHSCALE  = 3.6,
+ HEATING_LONGWAVE_PERCTAGE     = 0.55000000,
+ HEATING_SHORTWAVE_LENGTHSCALE = 0.3500000,
+ HEATING_RADIATION  = 0.0000000E+00,
+ HEATING_NETFLUX    = 0.0000000E+00,
+
+ PRECIPITATION_ON   = T,
+ PRECIPITATION_KIND = 'variable',
+ PRECIPITATION_FILE = '102512_prcp.nc',
+ PRECIPITATION_PRC  = 0.0000000E+00,
+ PRECIPITATION_EVP  = 0.0000000E+00,
+
+ AIRPRESSURE_ON    = T,
+ AIRPRESSURE_KIND  = 'variable', !'constant',
+ AIRPRESSURE_FILE  = '102512_met.nc',
+ AIRPRESSURE_VALUE =  1.010000000E+05
+ /
+
+ &NML_HEATING_CALCULATED
+ HEATING_CALCULATE_ON    = T,
+ HEATING_CALCULATE_TYPE  = 'flux',
+ HEATING_CALCULATE_FILE  = '102512_met.nc',
+ HEATING_CALCULATE_KIND  = 'variable',
+ HEATING_FRESHWATER = T,
+ COARE_VERSION = 'COARE26Z',!'COARE26Z','COARE40VN'
+ ZUU     =   10.000000    ,
+ ZTT     =   2.000000    ,
+ ZQQ     =   2.000000    ,
+ AIR_TEMPERATURE =  0.0000000E+00,
+ RELATIVE_HUMIDITY       =  0.0000000E+00,
+ SURFACE_PRESSURE        =  0.0000000E+00,
+ LONGWAVE_RADIATION      =  0.0000000E+00,
+ SHORTWAVE_RADIATION     =  0.0000000E+00
+ /
+
+ &NML_HEATING_SOLAR
+ HEATING_SOLAR_ON        = F,
+ HEATING_SOLAR_TYPE      = 'flux',
+ HEATING_SOLAR_FILE      = 'champ102-met-met-2017_hrrr_1hr-190718.nc',
+ HEATING_SOLAR_KIND      = 'variable',
+ ZM                      = 10.0,	! Units = meters
+ LATITUDE_REFERENCE      = 0.0,
+ LONGITUDE_REFERENCE     = 0.0,
+ JULIANDAY_REFERENCE     = 0.
+ /
+
+ &NML_PHYSICS
+ HORIZONTAL_MIXING_TYPE          = 'closure',
+ HORIZONTAL_MIXING_FILE          = 'none',
+ HORIZONTAL_MIXING_KIND          = 'constant',
+ HORIZONTAL_MIXING_COEFFICIENT   = 0.1,
+ HORIZONTAL_PRANDTL_NUMBER       = 1.0,
+ VERTICAL_MIXING_TYPE            = 'closure',
+ VERTICAL_MIXING_COEFFICIENT     = 1.0000E-06,
+ VERTICAL_PRANDTL_NUMBER         = 1.0000,
+
+ BOTTOM_ROUGHNESS_TYPE   = 'orig',
+ BOTTOM_ROUGHNESS_KIND   = 'constant',
+ BOTTOM_ROUGHNESS_FILE   = 'none'
+ BOTTOM_ROUGHNESS_LENGTHSCALE    =  0.002, ! was .025
+ BOTTOM_ROUGHNESS_MINIMUM        =  0.0025,! was .025
+
+ CONVECTIVE_OVERTURNING       = F,
+ SCALAR_POSITIVITY_CONTROL    = T,
+ BAROTROPIC                   = F,   ! orignal in test case 1: F,
+ BAROCLINIC_PRESSURE_GRADIENT = 'sigma levels',
+ SEA_WATER_DENSITY_FUNCTION   = 'dens2',
+ RECALCULATE_RHO_MEAN         = F,
+ INTERVAL_RHO_MEAN            = 'seconds= 1800.0',
+ TEMPERATURE_ACTIVE           = T,
+ SALINITY_ACTIVE              = F,
+ SURFACE_WAVE_MIXING          = F,
+ WETTING_DRYING_ON            = T,
+ ADCOR_ON                     = F
+ /
+
+ &NML_RIVER_TYPE
+ RIVER_NUMBER    =           24,
+ RIVER_TS_SETTING        = 'specified',
+ RIVER_INFLOW_LOCATION   = 'node',
+ RIVER_INFO_FILE   = '102512_riv.nml',
+ RIVER_KIND        = 'variable',
+ /
+
+ &NML_OPEN_BOUNDARY_CONTROL
+ OBC_ON                     = F,
+ OBC_NODE_LIST_FILE         = 'none',
+ OBC_ELEVATION_FORCING_ON   = F,
+ OBC_ELEVATION_FILE         = 'none',
+ OBC_TS_TYPE                = 1,
+ OBC_TEMP_NUDGING           = F,
+ OBC_TEMP_FILE              = 'none',
+ OBC_TEMP_NUDGING_TIMESCALE =  1.0000000E+00,
+ OBC_SALT_NUDGING           = F,
+ OBC_SALT_FILE              = 'none',
+ OBC_SALT_NUDGING_TIMESCALE =  0.0000000E+00,
+ OBC_MEANFLOW               = F,
+ OBC_MEANFLOW_FILE          = 'none',
+ OBC_LONGSHORE_FLOW_ON      = F,
+ OBC_LONGSHORE_FLOW_FILE    = 'none'
+ /
+
+ &NML_GRID_COORDINATES
+ GRID_FILE            = '102512_grd.dat',
+ GRID_FILE_UNITS      = 'degrees',
+ PROJECTION_REFERENCE = 'lonlat', 
+ SIGMA_LEVELS_FILE    = '102512_sigma.dat',
+ DEPTH_FILE      = '102512_dep.dat',
+ CORIOLIS_FILE   = '102512_cor.dat',
+ SPONGE_FILE     = '102512_spg.dat'
+ /
+ 
+ &NML_GROUNDWATER
+ GROUNDWATER_ON      = F,
+ GROUNDWATER_TEMP_ON = F,
+ GROUNDWATER_SALT_ON = F,
+ GROUNDWATER_KIND    = 'none',
+ GROUNDWATER_FILE    = 'none',
+ GROUNDWATER_FLOW    = 0.0000000E+00,
+ GROUNDWATER_TEMP    = 0.0000000E+00,
+ GROUNDWATER_SALT    = 0.0000000E+00
+ /
+
+ &NML_LAG
+ LAG_PARTICLES_ON        = F,
+ LAG_START_FILE  = 'none',
+ LAG_OUT_FILE    = 'none',
+ LAG_FIRST_OUT   = 'none',
+ LAG_RESTART_FILE        = 'none',
+ LAG_OUT_INTERVAL        = 'none',
+ LAG_SCAL_CHOICE = 'none'
+ /
+
+ &NML_ICE
+ kstrength = 0,
+ krdg_partic = 1,
+ krdg_redist =  1,
+ albicev = 0.78,
+ albicei = 0.36,
+ albsnowv = 0.98,
+ albsnowi = 0.70,
+ kitd = 1,
+ kcatbound = 1,
+ i0vis = 0.70, ! used 0.068 for the test run
+ floediam = 300.
+ /
+
+ &NML_ADDITIONAL_MODELS
+ DATA_ASSIMILATION       = F,
+ DATA_ASSIMILATION_FILE  = 'none',
+ BIOLOGICAL_MODEL        = F,
+ STARTUP_BIO_TYPE        = 'none',
+ SEDIMENT_MODEL          = F,
+ SEDIMENT_MODEL_FILE     = 'none',
+ ICING_MODEL             = F,
+ ICING_FORCING_FILE      = 'wrf_for.nc',
+ ICING_FORCING_KIND      = 'variable',
+ ICING_AIR_TEMP          =  0.0000000E+00,
+ ICING_WSPD              = 0.0000000E+00,
+ ICE_MODEL               = T,
+ ICE_FORCING_KIND        = 'variable', !'constant',
+ ICE_FORCING_FILE        = 102512_met.nc
+ ICE_SEA_LEVEL_PRESSURE  = 1.0100000E+05,
+ ICE_AIR_TEMP            = 1.0000000E+01,
+ ICE_SPEC_HUMIDITY       = 4.0000000E-03,
+ ICE_SHORTWAVE           = 5.0000000E+02, ! obviously very dependent on hour and season
+ ICE_CLOUD_COVER         = 3.0000000E-01,
+ ICE_LONGWAVE_TYPE       = 'PW',
+ /
+
+ &NML_PROBES
+ PROBES_ON       = F,
+ PROBES_NUMBER   = 10,
+ PROBES_FILE     = 'none'
+ /
+
+ &NML_NCNEST
+ NCNEST_ON        = F,
+ NCNEST_BLOCKSIZE = 120,
+ NCNEST_NODE_FILES= 'erie_coarse_nodes.dat'
+ /
+
+ &NML_NESTING
+ NESTING_ON        = F,
+ NESTING_BLOCKSIZE = 120,
+ NESTING_FILE_NAME = 'node_nest.nc'
+ /
+
+&NML_STATION_TIMESERIES
+OUT_STATION_TIMESERIES_ON       = F,
+STATION_FILE    = 'none',
+LOCATION_TYPE   = 'node',
+OUT_ELEVATION   = F,
+OUT_VELOCITY_3D = F,
+OUT_VELOCITY_2D = F,
+OUT_WIND_VELOCITY       = F,
+OUT_SALT_TEMP   = F,
+OUT_INTERVAL    = 'days= 0.0'
+/
+
+ &NML_BOUNDSCHK
+ BOUNDSCHK_ON    = F,
+ CHK_INTERVAL    = 0,
+ VELOC_MAG_MAX   =  0.0000000E+00,
+ ZETA_MAG_MAX    =  0.0000000E+00,
+ TEMP_MAX        =  0.0000000E+00,
+ TEMP_MIN        =  0.0000000E+00,
+ SALT_MAX        =  0.0000000E+00,
+ SALT_MIN        =  0.0000000E+00
+ /
+
+ &NML_DYE_RELEASE
+ DYE_ON             = F,
+ DYE_RELEASE_START  = '2004-06-01 00:00:00',
+ DYE_RELEASE_STOP   = '2004-09-01 00:00:00',
+ KSPE_DYE           = 21,
+ MSPE_DYE           = 3,
+ K_SPECIFY          = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21,
+ M_SPECIFY          = 1913 2827 3055,
+ DYE_SOURCE_TERM    = 1.0
+ /
+
+

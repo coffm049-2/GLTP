@@ -1,0 +1,144 @@
+ &NML_RIVER
+ RIVER_NAME = 'black01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 744,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'don01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 3834,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'genesee01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 10516,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'humber01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 2062,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'niagara01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 842,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'niagara02',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 843,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'niagara03',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 844,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'niagara04',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 845,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'niagara05',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 846,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'oswego01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 19856,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'salmon01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 13919,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_us01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 15386,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_us02',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 15385,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_us03',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 15384,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_us04',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 15387,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can01',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 21047,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can02',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 21372,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can03',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 21686,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can04',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 21988,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can05',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 21987,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can06',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 22270,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can07',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 22271,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can08',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 22540,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/
+ &NML_RIVER
+ RIVER_NAME = 'stlaw_can09',
+ RIVER_FILE = 'loofs_for_epa/forcing/loofs_riv_2022.nc',
+ RIVER_GRID_LOCATION = 22542,
+ RIVER_VERTICAL_DISTRIBUTION = unifor!
+/

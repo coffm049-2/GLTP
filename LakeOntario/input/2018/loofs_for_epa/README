@@ -1,0 +1,16 @@
+contact: james.kessler@noaa.gov 
+
+this package contains the following for the Lake Ontario Operational Forecast System (LOOFS):
+	-grid files
+	-namelists
+	-meteorological forcing* for 2018-01-01 thru 2018-12-30 (last day omitted)
+	-EXAMPLE river forcing for 8 months in 2022 (b/c data not readily available in 2018)
+
+these files were generated for NOAA GLERL's experimental GLCFS and should be compatible
+with FVCOM version 4.3.1 (available at github.com/FVCOM-GitHub/FVCOM/releases/tag/release-v4.3.1)
+
+The make.inc file is also included to indicate the compile-time options we set.
+(many settings will be specific to our HPC but some are physics-related)
+
+*the met forcing is NOT interpolated onto the unstructured grid but instead formatted in
+such a way that FVCOM can read it in directly and do on-the-fly interpolation when the model runs
