@@ -7,22 +7,22 @@ using TidierData
 using GeoStats
 using DelimitedFiles
 
-# file = "/work/GLFBREEZ/Lake_Ontario/Initial_Conditions/2013/Initial_Conditions_2013_final.nc"
-file = "/work/GLFBREEZ/Lake_Ontario/Initial_Conditions/2018/Initial_Conditions_2018.nc"
+year = "2018"
 
-x = ncread(file, "X")
-y = ncread(file, "Y")
-z = ncread(file, "Z")
-tp = reshape(ncread(file, "TP"), (256 * 133 *10, 1))[:,1]
-#tp = reshape(mean(tp, dims = 3)[begin:end,begin:end,1], (256*133, 1))
 
-tpInits = DataFrame(I = repeat(1:256, inner = 133*10), J = repeat(1:133, outer = 256*10), K = repeat(1:2:20, inner = 256, outer= 133) ./ 1000, tp = tp)
+file = "loemInit" * year *".csv"
+#file = "ic2018.inp"
+#/work/GLFBREEZ/Lake_Ontario/Initial_Conditions/2013/Initial_Conditions_2013_final.nc
+
+
+tpinits = CSV.read(file, DataFrame)
 
 efdcMap = @chain DataFrame(readdlm("/work/GLFBREEZ/LOEM/2013_simulation/inputs/latitudes_longitudes.txt", skipstart = 1), :auto) begin
   @rename(I = x1, J = x2, lat = x3, lon = x4)
-  @right_join(tpInits)
+  @right_join(tpinits)
   @drop_missing(lat,lon)
   # mutliply by 2 to map it to FVCOM
+  @mutate(K = K*2 / 1000)
 end
 
 EFDCgeotable = georef((tp=efdcMap[:,"tp"], lon=efdcMap[:,"lon"], lat=efdcMap[:,"lat"], sigma=efdcMap[:,"K"]), (:lon, :lat, :sigma))
@@ -41,5 +41,5 @@ pset = PointSet(Matrix(fvtest[:, 1:3])')
 
 
 fvcomInterp = EFDCgeotable |> Interpolate(pset, NN())
-writedlm("../../input/initLOTP2018.dat", reshape(fvcomInterp.tp, (34395, 20)), " ")
+writedlm("../../input/init" * year * ".dat", reshape(fvcomInterp.tp, (:, 20)), " ")
 

@@ -3,7 +3,7 @@ import pandas as pd
 import datetime
 from netCDF4 import Dataset
 # previously downloaded at concatenated data using the R script
-df = pd.read_csv("../../input/2013/rivers/rivers2013_TP_JM_narm_lotpflows.csv")
+df = pd.read_csv("../../input/2013/rivers/rivers2013_temp_tp_flow_clean.csv")
 df["dateTime"] = pd.to_datetime(df["dateTime"], utc = False)
 
 dfstLaw = pd.read_csv("../../input/2013/rivers/stLaw2013.txt", sep = "\t", header = 0)[["datetime", "discharge"]]
@@ -39,17 +39,18 @@ df["TP", "stlawrenceusa"] = df["TP", "stlawrence"]
 df["TP", "stlawrencecan"] = df["TP", "stlawrence"]
 df["temp", "stlawrencecan"] = df["temp", "stlawrence"]
 df["temp", "stlawrenceusa"] = df["temp", "stlawrence"]
-df["flow", "niagara_loem"] = df["flow", "niagara_loem"] / 5
-df["flow", "niagara_dolan"] = df["flow", "niagara_dolan"] / 5
-df["flow", "niagara_notl"] = df["flow", "niagara_notl"] / 5
+
+df["flow", "niagara-loem"] = df["flow", "niagara-loem"] / 5
+df["flow", "niagara-dolan"] = df["flow", "niagara-dolan"] / 5
+df["flow", "niagara-notl"] = df["flow", "niagara-notl"] / 5
 
 # divide niagara and st lawrence into number of different nodes
 # lsplit flow evenly between them 
 # NOTE could try with outter 2 having 1/2 flow
-riverNames = {riv : 1 for riv in np.unique(df.columns.get_level_values(1)) if riv not in ["niagara_loem", "niagara_notl", "niagara_dolan", "stlawrencecan", "stlawrenceusa"] and riv !=""}
-riverNames["niagara_loem"] = 5
-riverNames["niagara_dolan"] = 5
-riverNames["niagara_notl"] = 5
+riverNames = {riv : 1 for riv in np.unique(df.columns.get_level_values(1)) if riv not in ["niagara-loem", "niagara-notl", "niagara-dolan", "stlawrencecan", "stlawrenceusa"] and riv !=""}
+riverNames["niagara-loem"] = 5
+riverNames["niagara-dolan"] = 5
+riverNames["niagara-notl"] = 5
 # 3 for usa and 6 for canada
 riverNames["stlawrenceusa"] = 3 
 riverNames["stlawrencecan"] = 6

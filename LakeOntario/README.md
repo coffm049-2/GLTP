@@ -55,6 +55,8 @@ Also, check the directories where these scripts are stored because the each have
     b. river files (`input/YEAR/riversYear.nc`)
     c. slurm scripts copy a previous SLURM script and find and replace for you new scenario
         - `:%s/OLDRUN/NEWRUN/` followed by enter
+    d. Coreolis file- do to quirks about FVCOM you will need to create a new coreolis file each time you make a new run file
+        - Say you have "runs/2013/newRun_run.nml" you then need to make sure to have "input/2013/newRun_cor.dat". You can just copy one of the old _cor files to the new position because it doens't change
 3. [Run model](scripts/03-submitRuns)
     - test for a couple time steps 
         - Do this interactively `salloc -n 24` then submit the script right in terminal
