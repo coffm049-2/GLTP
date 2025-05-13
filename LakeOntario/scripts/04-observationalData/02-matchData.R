@@ -4,7 +4,7 @@
 
 library(tidyverse)
 library(ncdf4)
-source("../processData/GLENDA.R")
+source("GLENDA.R")
 
 realDatadir <- "../../realData/"
 
@@ -158,11 +158,15 @@ full <- bind_rows(glenda, csmi, bouy) %>%
     .default = sigma
   )) %>%
   saveRDS(paste0(realDatadir, "realDataWsites.Rds"))
+full <- readRDS(paste0(realDatadir, "realDataWsites.Rds"))
+
+fvcomMatchedNodes <- full %>% distinct(node_fvcom) %>% arrange(node_fvcom) %>%
+  pull(node_fvcom)
 
 
-
-fvcom <- ncdf4::nc_open("../../output/runs/fvcom_0001.nc")
-fvcomTime <- data.frame("days" = ncdf4::ncvar_get(fvcom, "time")) %>%
+fvcom <- ncdf4::nc_open("../../output/runs/2018/scenario1_0001.nc")
+fvcomTime <- data.frame(
+  "days" = ncdf4::ncvar_get(fvcom, "time")) %>%
   mutate(time = seq_len(nrow(.))) %>%
   mutate(
     simDays = floor(days),
@@ -172,13 +176,19 @@ fvcomTime <- data.frame("days" = ncdf4::ncvar_get(fvcom, "time")) %>%
     dateTime = ymd("1970-01-01") + simTime,
   ) %>%
   select(time, dateTime) 
-fvcomData <- reshape2::melt(ncdf4::ncvar_get(fvcom, "temp")) %>%
+fvcomData <- reshape2::melt(ncdf4::ncvar_get(fvcom, "temp")[fvcomMatchedNodes, ,]) %>%
   rename(node = Var1, sigma= Var2, time = Var3, temp = value)
 
-fvcomData$tp <- reshape2::melt(ncdf4::ncvar_get(fvcom, "TP")) %>%
+fvcomData$tp <- reshape2::melt(ncdf4::ncvar_get(fvcom, "TP")[fvcomMatchedNodes, ,]) %>%
   rename(node = Var1, sigma= Var2, time = Var3, tp = value) %>% pull(tp)
 
+fvcomNodeDF <- data.frame("node" = fvcomMatchedNodes) %>%
+  mutate(num = 1:n())
+
 fvcomData <- fvcomData %>%
+  left_join(fvcomNodeDF, by = c("node"= "num")) %>%
+  select(-node) %>% 
+  rename(node = node.y) %>%
   # only keep nodes with matching data
   filter(node %in% unique(full$node_fvcom)) %>% 
   left_join(fvcomTime) %>%
@@ -238,4 +248,5 @@ full %>%
   select(-depth) %>%
   rename(temp.efdc = temp) %>%
   saveRDS(paste0(realDatadir, "simDataWsites.Rds"))
+
 
