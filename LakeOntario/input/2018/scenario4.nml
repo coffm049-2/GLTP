@@ -5,13 +5,13 @@
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'eighteen-loem01',
+ RIVER_NAME = 'eighteen-lotp01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 6155,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'genesee-loem01',
+ RIVER_NAME = 'genesee-lotp01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 10516,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
@@ -29,13 +29,13 @@
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'oakorch-loem01',
+ RIVER_NAME = 'oakorch-lotp01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 9172,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'oswego-loem01',
+ RIVER_NAME = 'oswego-lotp01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 19856,
  RIVER_VERTICAL_DISTRIBUTION = unifor!

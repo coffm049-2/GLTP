@@ -22,21 +22,12 @@
 # rm *.fixed.zip
 
 
-cd /work/GLHABS/GreatLakesHydro/LakeOntario/scripts/modelEval
+cd /work/GLHABS/GreatLakesHydro/LakeOntario/scripts/04-modelEval
 
 module load nco
 #!/bin/bash
 DIR=../../output/runs
 
-# DONE 
-# ncks -v lat,lon,h,art1 $DIR/fvcom_0001.nc \
-#   -O --output $DIR/gridData.nc
-# ncks -v latc,lonc $DIR/fvcom_0001.nc \
-#   -O --output $DIR/neleData.nc
-
-# [ ] compare ice coverage for Aril 10 (day 100, 11am) and november 16 (day 320, 11pm)
-# [ ] Take picture
-# [ ] compute ice coverage
 
 # Already done
 # don't subset variables becuase it breaks Visi

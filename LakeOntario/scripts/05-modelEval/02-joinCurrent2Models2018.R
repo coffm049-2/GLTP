@@ -3,33 +3,9 @@ library(ncdf4)
 
 
 #bouys <- read_table("../../realData/bouys/bouyCoords.tsv", skip = 1)
-fvcom <- nc_open("../../output/runs/fvcom_0001.nc")
+fvcom <- nc_open("../../output/runs/2013/dolanHot_0001.nc")
 
 
-#  neleCoords <- data.frame(
-#    "lng" = ncvar_get(fvcom, "lon"),
-#    "lat" = ncvar_get(fvcom, "lat")
-#  ) %>%
-#    mutate(lng = lng -360)
-#  
-#  
-#  bouys$node.fvcom <- NA
-#  bouys$dist.fvcom <- NA
-#  bouys$lat.fvcom <- NA
-#  bouys$lng.fvcom <- NA
-#  for (loc in seq_len(nrow(bouys))) {
-#    cat(paste0(round(loc / nrow(bouys) * 100), '% completed \014'))
-#    if (loc == nrow(bouys)) cat(': Done') else cat('\014')
-#    neleCoordsDist <- sqrt(rowSums((bouys[c("lat", "lon")][loc, ] - matrix(neleCoords[c("lat", "lng")]))**2))
-#    neleCoordsNode <- which.min(neleCoordsDist)
-#    bouys$node.fvcom[loc] <- neleCoordsNode
-#    bouys$dist.fvcom[loc] <- min(neleCoordsDist)
-#    bouys$lat.fvcom[loc] <- neleCoords$lat[neleCoordsNode]
-#    bouys$lng.fvcom[loc] <- neleCoords$lng[neleCoordsNode]
-#  }
-#  
-#  
-#  saveRDS(bouys, "neleMatchedBouys.Rds")
 bouys <- readRDS("neleMatchedBouys.Rds") %>%
   distinct() %>%
   filter(!grepl("2013", filename, ignore.case= T))

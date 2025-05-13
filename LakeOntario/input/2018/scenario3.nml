@@ -5,13 +5,13 @@
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'eighteen-loem01',
+ RIVER_NAME = 'eighteen-lotp01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 6155,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'genesee-loem01',
+ RIVER_NAME = 'genesee-lotp01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 10516,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
@@ -29,13 +29,13 @@
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'oakorch-loem01',
+ RIVER_NAME = 'oakorch-lotp01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 9172,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'oswego-loem01',
+ RIVER_NAME = 'oswego-lotp01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 19856,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
@@ -47,31 +47,31 @@
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'niagara-notl01',
+ RIVER_NAME = 'niagara-dolan01',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 841,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'niagara-notl02',
+ RIVER_NAME = 'niagara-dolan02',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 842,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'niagara-notl03',
+ RIVER_NAME = 'niagara-dolan03',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 843,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'niagara-notl04',
+ RIVER_NAME = 'niagara-dolan04',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 844,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
 /
  &NML_RIVER
- RIVER_NAME = 'niagara-notl05',
+ RIVER_NAME = 'niagara-dolan05',
  RIVER_FILE = '2018/rivers2018.nc',
  RIVER_GRID_LOCATION = 845,
  RIVER_VERTICAL_DISTRIBUTION = unifor!
