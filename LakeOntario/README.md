@@ -62,10 +62,9 @@ Also, check the directories where these scripts are stored because the each have
         - Do this interactively `salloc -n 24` then submit the script right in terminal
     - test it for 2 weeks before entire run (using a batch submission)
 4. Create Visit videos
-    - Not too much help here besides Lisa's scripts above...
     - Make sure you remembner to project the output files from [LatLon to xy](output/runs/REAMDE.md)
-5. [Assemble observational data](scripts/observationalData)
-6. [Extract and evaluate relevant modeled data](scripts/05-modelEval)
+    - Not too much help here besides Lisa's scripts above...
+5. [Assemble observational data](scripts/04-observationalData)
 
 
 

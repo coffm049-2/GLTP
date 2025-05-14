@@ -13,7 +13,7 @@ file = "/work/GLFBREEZ/Lake_Ontario/Initial_Conditions/2018/Initial_Conditions_2
 x = ncread(file, "X")
 y = ncread(file, "Y")
 z = ncread(file, "Z")
-tp = reshape(ncread(file, "TP"), (256 * 133 *10, 1))[:,1]
+tp = reshape(ncread(file, "TP"), (256 * 133 *10, 1))[:,1] .* 1000
 #tp = reshape(mean(tp, dims = 3)[begin:end,begin:end,1], (256*133, 1))
 
 tpInits = DataFrame(I = repeat(1:256, inner = 133*10), J = repeat(1:133, outer = 256*10), K = repeat(1:2:20, inner = 256, outer= 133) ./ 1000, tp = tp)

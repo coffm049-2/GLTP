@@ -11,14 +11,14 @@ dfstLaw = pd.read_csv("../../input/2018/stLaw2018.txt", sep = "\t", header = Non
 dfstLaw.columns = ["datetime", "discharge"]
 dfstLaw["flow"] = dfstLaw.discharge * 0.0283
 dfstLaw["siteName"] = "stlawrence"
-dfstLaw["temp"] = 0
+dfstLaw["Temp"] = 0
 dfstLaw["TP"] = 0
 dfstLaw["dateTime"] = pd.to_datetime(dfstLaw["datetime"], utc = True)
 # [x] Convert date
 
 df = pd.concat([df, dfstLaw], axis = 0)
 df["dateTime"] = pd.to_datetime(df["dateTime"], utc = True)
-df = df[["siteName", "dateTime", "flow", "temp", "TP"]]
+df = df[["siteName", "dateTime", "flow", "Temp", "TP"]]
 
 
 # potentially it's from 1858,11,17
@@ -31,7 +31,7 @@ rivers = np.unique(df.siteName)
 rivers =rivers[[0,1,2,3,4, 8,9,10,11]]
 
 # Copy each loading scenario as a new set of columns
-df = df.pivot(index=["dateTime", "Itime", "Itime2"], columns = ["siteName"], values=  ["flow", "temp", "TP"]).reset_index()
+df = df.pivot(index=["dateTime", "Itime", "Itime2"], columns = ["siteName"], values=  ["flow", "Temp", "TP"]).reset_index()
 
 # divide flows to make sure they are spread across multiple nodes
 # also make sure values are added to new river names in stlawrence
@@ -39,8 +39,8 @@ df["flow", "stlawrenceusa"] = df["flow", "stlawrence"] / 3
 df["flow", "stlawrencecan"] = df["flow", "stlawrence"] / 3 * 2
 df["TP", "stlawrenceusa"] = df["TP", "stlawrence"]
 df["TP", "stlawrencecan"] = df["TP", "stlawrence"]
-df["temp", "stlawrencecan"] = df["temp", "stlawrence"]
-df["temp", "stlawrenceusa"] = df["temp", "stlawrence"]
+df["Temp", "stlawrencecan"] = df["Temp", "stlawrence"]
+df["Temp", "stlawrenceusa"] = df["Temp", "stlawrence"]
 df["flow", "niagara-loem"] = df["flow", "niagara-loem"] / 5
 df["flow", "niagara-dolan"] = df["flow", "niagara-dolan"] / 5
 df["flow", "niagara-notl"] = df["flow", "niagara-notl"] / 5
@@ -63,7 +63,7 @@ timeDF.columns = timeDF.columns.get_level_values(0)
 
 
 fluxDF = np.array([data.loc[:, ("flow", slice(None))] for data in riverVals.values()])[:, :, 0]
-tempDF = np.array([data.loc[:, ("temp", slice(None))] for riv, data in riverVals.items()])[:, :, 0]
+tempDF = np.array([data.loc[:, ("Temp", slice(None))] for riv, data in riverVals.items()])[:, :, 0]
 tp = np.array([data.loc[:, ("TP", slice(None))] for riv, data in riverVals.items()])[:, :, 0]
 
 # https://unidata.github.io/netcdf4-python/#attributes-in-a-netcdf-file

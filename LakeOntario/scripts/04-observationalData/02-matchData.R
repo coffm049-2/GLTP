@@ -185,7 +185,7 @@ fvcomData$tp <- reshape2::melt(ncdf4::ncvar_get(fvcom, "TP")[fvcomMatchedNodes, 
 fvcomNodeDF <- data.frame("node" = fvcomMatchedNodes) %>%
   mutate(num = 1:n())
 
-fvcomData <- fvcomData %>%
+test <- fvcomData %>%
   left_join(fvcomNodeDF, by = c("node"= "num")) %>%
   select(-node) %>% 
   rename(node = node.y) %>%

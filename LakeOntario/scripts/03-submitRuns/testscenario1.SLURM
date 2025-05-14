@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH -J dolanHot2013
+#SBATCH -J scenario12018
 #SBATCH --ntasks=32
 #SBATCH --mem=100gb
 #SBATCH -A glhabs
-#SBATCH -e dolanHot2013_error
-#SBATCH -o dolanHot2013_out
+#SBATCH -e scenario12018_error
+#SBATCH -o scenario12018_out
 #SBATCH --partition=ord
 #SBATCH -t 50:00:00
-#SBATCH --mail-user=coffman.christian@epa.gov
+#SBATCH --mail-user=maurer.julie@epa.gov
 #SBATCH --mail-type=all
 
 
@@ -27,4 +27,4 @@
 cd /work/GLHABS/GreatLakesHydro/LakeOntario
 source /work/GLHABS/GreatLakesHydro/physicsModules.sh
 
-mpiexec -n 31 fvcom_modded --casename=runs/2013/dolanHot
+mpiexec -n 31 fvcom_modded --casename=runs/2018/testscenario1
